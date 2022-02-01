@@ -27,6 +27,46 @@ plot("PM10_March20, col=cln, main=March 2020")
 cln <- colorRampPalette(c("red", "turquoise", "blue", "light blue", "orange", "pink"))(20)
 plot("PM10_May20, col=cln, main=May 2020")
 
+# I calculate the difference among values of PM10 in March and May 2020 to see the changes
+diff_PM10 <- PM10_March20 - PM10_May20
+# I plotted it
+plot(diff_PM10, col = cl, main= "EU, difference in PM10 March-May 2020")
+
+# I wanted to see more in detail the situation in Italy
+# I choose 4 coordinates to crop Italy from the European map downloaded 
+ext <- c(5, 25, 35, 50)
+
+# I cropped values of March and May in Italy 
+cropped_PM10_March20 <- crop(PM10_March20, ext)
+cropped_PM10_May20 <- crop(PM10_May20, ext)
+# I cropped also the difference
+cropped_diff_PM10 <- crop(diff_PM10, ext)
+# I plotted them
+plot(cropped_PM10_March20, col=cl, main = "PM10 values over Italy, March '20")
+plot(cropped_PM10_May20, col = cl, main= "PM10 values over Italy, May '20")
+plot(cropped_diff_PM10, col = cl, main= "Italy, difference in PM10 March-May 2020")
+
+library(tidyverse)
+
+names(PM10_March20) <- "PM10"
+p1 <- ggplot() + geom_raster(PM10_March20, mapping = aes(x = x,y = y, fill=PM10))+
+  scale_fill_viridis(option= "turbo")+ theme_gray()+
+  ggtitle("PM10 values over Europe, March 2020")+labs(x = "Longitude", y = "Latitude")+ 
+  theme(axis.title = element_text(size = 15, face = "italic"), plot.title = element_text(hjust = 0.5, size = 16, face = "bold.italic"))
+
+PM10_May20<-raster("C:/project/conc_act_scen_PM10_20200512_D+0.GTiff")
+names(PM10_May20) <- "PM10"
+p2 <- ggplot() + geom_raster(PM10_May20, mapping = aes(x = x,y = y, fill=PM10))+
+  scale_fill_viridis(option= "turbo")+ theme_gray()+
+  ggtitle("PM10 values over Europe, May 2020")+labs(x = "Longitude", y = "Latitude")+ 
+  theme(axis.title = element_text(size = 15, face = "italic"), plot.title = element_text(hjust = 0.5, size = 16, face = "bold.italic"))
+
+library(patchwork)
+p1 + p2
+
+
+
+
 # importing data of NO2 values of March and May 2020 in Europe
 tjan19 <- raster("jan19.nc")
 plot(tjan19, col=cl, main="Land Surface Temperature 2019")
