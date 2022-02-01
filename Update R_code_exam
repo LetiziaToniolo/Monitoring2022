@@ -57,18 +57,38 @@ p1 <- ggplot() + geom_raster(PM10_March20, mapping = aes(x = x,y = y, fill=PM10)
   scale_fill_viridis(option= "turbo")+ theme_gray()+
   ggtitle("PM10 values over Europe, March 2020")+labs(x = "Longitude", y = "Latitude")+ 
   theme(axis.title = element_text(size = 15, face = "italic"), plot.title = element_text(hjust = 0.5, size = 16, face = "bold.italic"))
+plot(1)
+
 names(PM10_May20) <- "PM10"
 p2 <- ggplot() + geom_raster(PM10_May20, mapping = aes(x = x,y = y, fill=PM10))+
   scale_fill_viridis(option= "turbo")+ theme_gray()+
   ggtitle("PM10 values over Europe, May 2020")+labs(x = "Longitude", y = "Latitude")+ 
   theme(axis.title = element_text(size = 15, face = "italic"), plot.title = element_text(hjust = 0.5, size = 16, face = "bold.italic"))
+plot(2)
 
-# I installed and used patchwork to make the sum
+# I installed and used patchwork to make the sum of the two situations in Europe
 install.packages("patchwork")
 library(patchwork)
 p1 + p2
 
+#
+names(cropped_PM10_March20) <- "PM10"
+p1 <- ggplot() + geom_raster(cropped_PM10_March20, mapping = aes(x = x,y = y, fill=PM10))+
+  scale_fill_viridis(option= "turbo")+ theme_gray()+
+  ggtitle("PM10 values over Italy, March 2020")+labs(x = "Longitude", y = "Latitude")+ 
+  theme(axis.title = element_text(size = 15, face = "italic"), plot.title = element_text(hjust = 0.5, size = 16, face = "bold.italic"))
+plot(p1)
 
+names(cropped_PM10_May20) <- "PM10"
+p2 <- ggplot() + geom_raster(cropped_PM10_May20, mapping = aes(x = x,y = y, fill=PM10))+
+  scale_fill_viridis(option= "turbo")+ theme_gray()+
+  ggtitle("PM10 values over Italy, May 2020")+labs(x = "Longitude", y = "Latitude")+ 
+  theme(axis.title = element_text(size = 15, face = "italic"), plot.title = element_text(hjust = 0.5, size = 16, face = "bold.italic"))
+plot(p2)
+
+# I made the sum between the two situations in Italy
+library(patchwork)
+p1 + p2
 
 # importing data of NO2 values of March and May 2020 in Europe
 tjan19 <- raster("jan19.nc")
