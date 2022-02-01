@@ -46,8 +46,7 @@ plot(cropped_PM10_March20, col=cl, main = "PM10 values over Italy, March '20")
 plot(cropped_PM10_May20, col = cl, main= "PM10 values over Italy, May '20")
 plot(cropped_diff_PM10, col = cl, main= "Italy, difference in PM10 March-May 2020")
 
-# I noticed that the images were not so clear so I decided to use ggplot2
-# ggplot()......
+# I noticed that the images were not so clear so I decided to use ggplot2 to create graphics
 # I installed ggplot2 
 install.packages("tidyverse")
 library(tidyverse)
