@@ -47,6 +47,7 @@ plot(cropped_PM10_May20, col = cl, main= "PM10 values over Italy, May '20")
 plot(cropped_diff_PM10, col = cl, main= "Italy, difference in PM10 March-May 2020")
 
 # I noticed that the images were not so clear so I decided to use ggplot2
+# ggplot()......
 # I installed ggplot2 
 install.packages("tidyverse")
 library(tidyverse)
@@ -90,6 +91,4 @@ plot(p2)
 library(patchwork)
 p1 + p2
 
-# importing data of NO2 values of March and May 2020 in Europe
-tjan19 <- raster("jan19.nc")
-plot(tjan19, col=cl, main="Land Surface Temperature 2019")
+# I made the same thing for data of NO3, PM2.5 and O3 values in Europe
