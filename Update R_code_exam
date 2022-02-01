@@ -51,22 +51,22 @@ plot(cropped_diff_PM10, col = cl, main= "Italy, difference in PM10 March-May 202
 install.packages("tidyverse")
 library(tidyverse)
 
+#
 names(PM10_March20) <- "PM10"
 p1 <- ggplot() + geom_raster(PM10_March20, mapping = aes(x = x,y = y, fill=PM10))+
   scale_fill_viridis(option= "turbo")+ theme_gray()+
   ggtitle("PM10 values over Europe, March 2020")+labs(x = "Longitude", y = "Latitude")+ 
   theme(axis.title = element_text(size = 15, face = "italic"), plot.title = element_text(hjust = 0.5, size = 16, face = "bold.italic"))
-
-PM10_May20<-raster("C:/project/conc_act_scen_PM10_20200512_D+0.GTiff")
 names(PM10_May20) <- "PM10"
 p2 <- ggplot() + geom_raster(PM10_May20, mapping = aes(x = x,y = y, fill=PM10))+
   scale_fill_viridis(option= "turbo")+ theme_gray()+
   ggtitle("PM10 values over Europe, May 2020")+labs(x = "Longitude", y = "Latitude")+ 
   theme(axis.title = element_text(size = 15, face = "italic"), plot.title = element_text(hjust = 0.5, size = 16, face = "bold.italic"))
 
+# I installed and used patchwork to make the sum
+install.packages("patchwork")
 library(patchwork)
 p1 + p2
-
 
 
 
