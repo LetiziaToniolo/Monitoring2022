@@ -71,7 +71,7 @@ install.packages("patchwork")
 library(patchwork)
 p1 + p2
 
-# I did the same thing for Italy
+# I did the same thing for Italy data
 names(cropped_PM10_March20) <- "PM10"
 p1 <- ggplot() + geom_raster(cropped_PM10_March20, mapping = aes(x = x,y = y, fill=PM10))+
   scale_fill_viridis(option= "turbo")+ theme_gray()+
