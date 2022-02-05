@@ -51,7 +51,7 @@ plot(cropped_diff_PM10, col = cl, main= "Italy, difference in PM10 March-May 202
 install.packages("tidyverse")
 library(tidyverse)
 
-#
+# I used ggplot2
 names(PM10_March20) <- "PM10"
 p1 <- ggplot() + geom_raster(PM10_March20, mapping = aes(x = x,y = y, fill=PM10))+
   scale_fill_viridis(option= "turbo")+ theme_gray()+
@@ -71,7 +71,7 @@ install.packages("patchwork")
 library(patchwork)
 p1 + p2
 
-#
+# I did the same thing for Italy
 names(cropped_PM10_March20) <- "PM10"
 p1 <- ggplot() + geom_raster(cropped_PM10_March20, mapping = aes(x = x,y = y, fill=PM10))+
   scale_fill_viridis(option= "turbo")+ theme_gray()+
@@ -90,4 +90,4 @@ plot(p2)
 library(patchwork)
 p1 + p2
 
-# I made the same thing for data of NO3, PM2.5 and O3 values in Europe
+# I made the same thing for data of NO3, PM2.5 and O3 values in Europe and then Italy
