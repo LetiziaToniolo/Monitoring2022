@@ -1,6 +1,9 @@
 # sp is a package for spatial data
 install.packages("sp")
 
+# I need raster packages because I use raster data
+install.packages("raster")
+
 # library is to start using the data present in the package
 library(ncdf4)
 library(raster)
