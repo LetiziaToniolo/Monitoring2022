@@ -1,12 +1,12 @@
-#sp is a package for spatial data
+# sp is a package for spatial data
 install.packages("sp")
 
-#library is to start using the data present in the package
+# library is to start using the data present in the package
 library(ncdf4)
 library(raster)
 
-#setting the working directory (where data is coming from and going to)
-#for my windows pc is setwd("C:/folder/")
+# setting the working directory (where data is coming from and going to)
+# for my windows pc is setwd("C:/folder/")
 setwd("C:/project/")
 
 # I downloaded 8 data files of PM10, NO2, PM2.5, O3 values in March and May 2020 in Europe 
@@ -16,12 +16,12 @@ setwd("C:/project/")
 PM10_March20<-raster("conc_act_scen_PM25_20200312_D+0.GTiff")
 PM10_May20<-raster("conc_act_scen_PM10_20200512_D+0.GTiff")
 
-#the function plot( ) is the most generic and used function for plotting dataset
+# the function plot( ) is the most generic and used function for plotting dataset
 plot(PM10_March20)
 plot(PM10_May20)
 
-#to change the title we use the function "main"; col is used to change the colour
-#we set the colours with the vector cl and make the final plot with those colors
+# to change the title we use the function "main"; col is used to change the colour
+# we set the colours with the vector cl and make the final plot with those colors
 cln <- colorRampPalette(c("red", "turquoise", "blue", "light blue", "orange", "pink"))(20)
 plot("PM10_March20, col=cln, main=March 2020")
 cln <- colorRampPalette(c("red", "turquoise", "blue", "light blue", "orange", "pink"))(20)
